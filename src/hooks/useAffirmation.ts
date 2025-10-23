@@ -31,7 +31,6 @@ export function useAffirmation(options?: UseAffirmationOptions) {
             setData(next)
         } catch (e) {
             // Stay graceful and quiet in the UI; log for devs
-            // eslint-disable-next-line no-console
             console.warn('[affirmations] fetch failed, using fallback:', e)
             setError(null)
             setData(randomFallback())

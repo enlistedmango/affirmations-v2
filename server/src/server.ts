@@ -9,13 +9,15 @@ async function hydrateFromRemote() {
     try {
         const res = await fetch(url)
         if (!res.ok) throw new Error(`status ${res.status}`)
-        let s = await res.text()
-        // Remove TS types and convert export to const
-        s = s.replace(/export\s+type[\s\S]*?;\s*/g, '')
-        s = s.replace(/export\s+const\s+AFFIRMATIONS\s*:\s*[^=]+=/, 'const AFFIRMATIONS =')
-        // Evaluate safely in a sandboxed Function; we only return data
-        // eslint-disable-next-line no-new-func
-        const list = new Function(`${s}; return AFFIRMATIONS;`)()
+        const s = await res.text()
+        // Extract the array literal assigned to AFFIRMATIONS to avoid TS syntax
+        const match = s.match(/export\s+const\s+AFFIRMATIONS[\s\S]*?=\s*(\[[\s\S]*?\]);/)
+        if (!match) throw new Error('AFFIRMATIONS array not found in remote file')
+        let arrayCode = match[1]
+        // Strip TS-specific tokens that break evaluation
+        arrayCode = arrayCode.replace(/\sas\s+const/g, '')
+        // Evaluate only the array literal
+        const list = new Function(`return (${arrayCode});`)()
         if (Array.isArray(list)) {
             setData(list)
             console.log(`[api] Loaded ${list.length} affirmations from v1 dataset`)

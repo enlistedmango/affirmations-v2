@@ -6,9 +6,9 @@ const app = new Hono()
 
 app.use('*', cors())
 
-app.get('/', (c: any) => c.json({ name: 'Affirmations API (v2-local)', version: '0.1.0' }))
+app.get('/', (c) => c.json({ name: 'Affirmations API (v2-local)', version: '0.1.0' }))
 
-app.get('/v1/affirmation', (c: any) => {
+app.get('/v1/affirmation', (c) => {
     const tag = c.req.query('tag') || undefined
     const lang = c.req.query('lang') || undefined
     const list = filter(getData(), tag, lang)
@@ -17,7 +17,7 @@ app.get('/v1/affirmation', (c: any) => {
     return c.json(item)
 })
 
-app.get('/v1/affirmations', (c: any) => {
+app.get('/v1/affirmations', (c) => {
     const tag = c.req.query('tag') || undefined
     const lang = c.req.query('lang') || undefined
     const limitStr = c.req.query('limit')
@@ -29,7 +29,7 @@ app.get('/v1/affirmations', (c: any) => {
     return c.json(out)
 })
 
-app.get('/v1/affirmations/:id', (c: any) => {
+app.get('/v1/affirmations/:id', (c) => {
     const id = c.req.param('id')
     const found = getData().find(a => a.id === id)
     if (!found) return c.json({ message: 'Not found' }, 404)
