@@ -48,9 +48,10 @@ function App() {
         </div>
       </main>
       <footer className="footer">
-        <span>Pastel calm. Built by Mango with ❤️</span>
+        <span>Warm Reminder — one gentle affirmation at a time.</span><br />
+        <span>Built by Mango with ❤️</span>
       </footer>
-    </div>
+    </div >
   )
 }
 
