@@ -61,10 +61,11 @@ body {
 
 /* Shared content column so card and controls align */
 .content {
-  width: min(760px, 92vw);
+  width: min(700px, 88vw);
   display: grid;
   gap: 0.9rem;
   margin: 0 auto;
+  justify-items: center;
 }
 
 .header {
@@ -101,7 +102,8 @@ body {
   letter-spacing: 0.1px;
   cursor: pointer;
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03), 0 4px 14px rgba(167, 139, 250, 0.08);
+  /* Neutral shadow to avoid colored bands behind buttons */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   min-height: 44px;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
@@ -132,8 +134,33 @@ body {
 
 /* Mobile adjustments */
 @media (max-width: 480px) {
+  .content {
+    width: min(480px, 84vw);
+
+  }
+  /* Ensure the affirmation card is centered and slightly narrower than the column */
+  .content > .card {
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  /* Let the footer appear right after content on small screens */
+  .app-shell {
+    grid-template-rows: auto auto;
+  }
+
+  /* Switch to grid for reliable centering of fixed-width buttons */
+  .controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    justify-items: center;
+  }
+
   .controls .btn {
-    flex: 1 1 100%;
+    width: 90%;
+    margin-inline: 0;
   }
 }
 
