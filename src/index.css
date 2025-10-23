@@ -1,0 +1,126 @@
+:root {
+  --bg: #fbf7ff;
+  --ink: #1f2a2e;
+  --muted: #5b6b73;
+  --pastel-1: #f6e7ff;
+  /* lavender */
+  --pastel-2: #d6f5ff;
+  /* sky */
+  --pastel-3: #ffe9ec;
+  /* blush */
+  --accent: #a78bfa;
+
+  font-family: "Kalam", cursive;
+  line-height: 1.5;
+  font-weight: 300;
+  color: var(--ink);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    /* subtle vignette */
+    radial-gradient(1400px 900px at 50% 120%, rgba(31, 42, 46, 0.06), transparent 60%),
+    /* pastel washes */
+    radial-gradient(1100px 700px at 80% -10%, rgba(246, 231, 255, 0.75), transparent 60%),
+    radial-gradient(1000px 650px at -10% 25%, rgba(214, 245, 255, 0.68), transparent 60%),
+    radial-gradient(900px 600px at 110% 110%, rgba(255, 233, 236, 0.62), transparent 50%),
+    /* deeper base background */
+    linear-gradient(180deg, #f2ecff 0%, #eee8ff 35%, #f8f2ff 100%);
+}
+
+.app-shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  /* main fills, footer hugs bottom */
+  align-items: stretch;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  height: 100%;
+  /* fill the 1fr track from app-shell */
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.brand {
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.35rem);
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+.controls {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: white;
+  color: var(--ink);
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  font-family: "Kalam", cursive;
+  /* ensure form controls use site font */
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03), 0 4px 14px rgba(167, 139, 250, 0.08);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(167, 139, 250, 0.14);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn.primary {
+  background: linear-gradient(180deg, #fff, #f7f2ff);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.footer {
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 1rem;
+  text-align: center;
+}

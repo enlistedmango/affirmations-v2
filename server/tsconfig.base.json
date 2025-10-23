@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "noFallthroughCasesInSwitch": true,
+        "resolveJsonModule": true,
+        "allowJs": false
+    }
+}

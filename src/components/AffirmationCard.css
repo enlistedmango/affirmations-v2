@@ -1,0 +1,95 @@
+:root {
+    --bg: #fbf7ff;
+    --ink: #1f2a2e;
+    --muted: #5b6b73;
+    --pastel-1: #f6e7ff;
+    --pastel-2: #d6f5ff;
+    --pastel-3: #ffe9ec;
+    --accent: #a78bfa;
+    /* lavender */
+
+    /* Card theming variables (overridden inline) */
+    --card-accent: var(--accent);
+    --card-shadow: rgba(167, 139, 250, 0.28);
+    --card-bg1: rgba(255, 255, 255, 0.96);
+    --card-bg2: rgba(255, 255, 255, 0.94);
+}
+
+.card {
+    width: min(760px, 92vw);
+    margin: 0 auto;
+    padding: clamp(1.25rem, 2vw + 0.5rem, 2rem);
+    background: linear-gradient(180deg, var(--card-bg1), var(--card-bg2));
+    border-radius: 22px;
+    border: 1px solid color-mix(in srgb, var(--card-accent) 30%, white 70%);
+    box-shadow:
+        0 24px 64px var(--card-shadow),
+        0 8px 22px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--ink);
+    transform: translateY(0) scale(1);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.card:hover {
+    transform: translateY(-2px) scale(1.005);
+    box-shadow:
+        0 32px 84px color-mix(in srgb, var(--card-accent) 22%, transparent),
+        0 12px 28px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.85) inset;
+}
+
+.card-enter {
+    animation: cardIn 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card .text {
+    font-family: "Kalam", cursive;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 1.1rem + 2.1vw, 2.6rem);
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: 0;
+}
+
+.card .meta {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+}
+
+.author {
+    opacity: 0.9;
+}
+
+.tags {
+    opacity: 0.85;
+    font-style: italic;
+    font-family: "Kalam", cursive;
+    font-weight: 300;
+    letter-spacing: 0;
+}
+
+.tags .tag-label {
+    font-style: normal;
+    font-family: inherit;
+    opacity: 0.7;
+    margin-right: 0.35rem;
+}
