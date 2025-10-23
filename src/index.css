@@ -160,14 +160,14 @@ body {
   }
 
   .controls .btn {
-    width: 90%;
+    width: 50%;
     margin-inline: 0;
   }
 }
 
 .footer {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 1rem;
   text-align: center;
 }
