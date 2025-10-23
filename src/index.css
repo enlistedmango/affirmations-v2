@@ -138,8 +138,9 @@ body {
     width: min(480px, 84vw);
 
   }
+
   /* Ensure the affirmation card is centered and slightly narrower than the column */
-  .content > .card {
+  .content>.card {
     width: 90%;
     margin-inline: auto;
   }
